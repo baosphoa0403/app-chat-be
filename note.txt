@@ -1,0 +1,22 @@
+build image 
+docker build -t app-chat .
+
+run image publish 1 conatiner port ra máy host   r port conatiner 
+docker run -p3000:3000 app-chat 
+
+xem log container 
+docker logs -f 61fd1fc87777
+
+xem container dang run  
+docker ps 
+
+xem container dang run vs stop 
+docker ps -a
+
+xem resource may host 
+docker container stats 
+
+open shell bên trong container 
+docker exec -it idContainer sh 
+
+
