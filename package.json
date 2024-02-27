@@ -76,6 +76,11 @@
         "npm run format",
         "git add ."
       ]
+    },
+    "husky": {
+      "hooks": {
+        "pre-commit": "yarn run lint-staged"
+      }
     }
   }
 }
