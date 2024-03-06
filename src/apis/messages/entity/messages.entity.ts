@@ -1,8 +1,7 @@
-import { BaseAbstractRepostitory } from '@app/common/base/base.repository';
-import { Injectable } from '@nestjs/common';
-import { BaseEntity, Column, Entity } from 'typeorm';
+import { BaseEntity } from '@app/common/base/base.entity';
+import { Column, Entity } from 'typeorm';
 
-@Entity({ name: 'message' })
+@Entity({ name: 'messages' })
 export class MessageEntity extends BaseEntity {
   @Column()
   content: string;

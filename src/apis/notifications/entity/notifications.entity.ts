@@ -1,8 +1,7 @@
-import { BaseAbstractRepostitory } from '@app/common/base/base.repository';
-import { Injectable } from '@nestjs/common';
-import { BaseEntity, Column, Entity } from 'typeorm';
+import { BaseEntity } from '@app/common/base/base.entity';
+import { Column, Entity } from 'typeorm';
 
-@Entity({ name: 'notification' })
+@Entity({ name: 'notifications' })
 export class NotificationEntiy extends BaseEntity {
   @Column()
   content: string;

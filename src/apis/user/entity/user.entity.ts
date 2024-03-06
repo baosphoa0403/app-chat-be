@@ -2,7 +2,7 @@ import { BeforeInsert, Column, Entity } from 'typeorm';
 import { Exclude } from 'class-transformer';
 import { BaseEntity } from '@app/common/base/base.entity';
 
-@Entity({ name: 'user' })
+@Entity({ name: 'users' })
 export class UserEntity extends BaseEntity {
   /** Tài khoản đăng nhập */
   @Column()
