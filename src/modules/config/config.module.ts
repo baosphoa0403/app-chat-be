@@ -1,12 +1,15 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule as NestConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
+import configuration from './configuration';
 
+console.log(`.env.${process.env.NODE_ENV}`);
 @Module({
   imports: [
     NestConfigModule.forRoot({
+      load: [configuration],
       isGlobal: true,
-      envFilePath: '.env.dev',
+      envFilePath: `.env.${process.env.NODE_ENV}`,
       validationSchema: Joi.object({
         NODE_ENV: Joi.string(),
         APP_PORT: Joi.number(),
@@ -19,6 +22,7 @@ import * as Joi from 'joi';
         DB_SCHEMA: Joi.string().required(),
 
         SECRET_JWT: Joi.string().required(),
+        JWT_EXPIRES_IN: Joi.string().required(),
       }),
     }),
   ],
