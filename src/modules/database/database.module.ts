@@ -9,12 +9,12 @@ import { ConfigService } from '@nestjs/config';
       useFactory: (configService: ConfigService) => {
         return {
           type: 'postgres',
-          host: configService.get<string>('POSTGRES_HOST'),
-          port: configService.get<number>('POSTGRES_PORT'),
-          username: configService.get<string>('POSTGRES_USER'),
-          password: configService.get<string>('POSTGRES_PASSWORD'),
-          database: configService.get<string>('POSTGRES_DB'),
-          schema: configService.get<string>('DB_SCHEMA'),
+          host: configService.get<string>('database.host'),
+          port: configService.get<number>('database.port'),
+          username: configService.get<string>('database.username'),
+          password: configService.get<string>('database.password'),
+          database: configService.get<string>('database.db'),
+          schema: configService.get<string>('database.schema'),
           autoLoadEntities: true,
           migrationsTableName: `migrations`,
           synchronize: true,
