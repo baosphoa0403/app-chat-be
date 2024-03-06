@@ -13,6 +13,8 @@ docker ps
 xem container dang run vs stop 
 docker ps -a
 
+docker ps -a
+
 xem resource may host 
 docker container stats 
 
