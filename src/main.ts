@@ -4,8 +4,13 @@ import { ConfigService } from '@nestjs/config';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-  const configService = new ConfigService();
+  const configService = app.get(ConfigService);
   const port = configService.get('port');
-  await app.listen(port);
+  const env = configService.get('NODE_ENV');
+
+  await app.listen(port, () => {
+    console.info(`Server running evironment ${env} port ${port}`);
+  });
 }
+
 bootstrap();

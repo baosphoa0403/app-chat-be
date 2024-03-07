@@ -3,7 +3,6 @@ import { ConfigModule as NestConfigModule } from '@nestjs/config';
 import * as Joi from 'joi';
 import configuration from './configuration';
 
-console.log(`.env.${process.env.NODE_ENV}`);
 @Module({
   imports: [
     NestConfigModule.forRoot({
