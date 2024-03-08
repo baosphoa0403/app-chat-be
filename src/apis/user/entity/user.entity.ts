@@ -1,8 +1,15 @@
-import { BeforeInsert, Column, Entity } from 'typeorm';
+import { BeforeInsert, Column, Entity, OneToMany, OneToOne, JoinColumn } from 'typeorm';
 import { Exclude } from 'class-transformer';
 import { BaseEntity } from '@app/common/base/base.entity';
+import { MessageEntity } from '@apis/messages/entity/messages.entity';
+import { NotificationEntity } from '@apis/notifications/entity/notifications.entity';
+import { ProfileEntity } from '@apis/profile/entity/profile.entity';
+import { AttachmentsEntity } from '@apis/attachments/entity/attachments.entity';
+import { RoleEntity } from '@apis/role/entity/role.entity';
+import { UserConversationEntity } from '@apis/user-conversations/entity/user-conversations.entity';
 
-@Entity({ name: 'user' })
+
+@Entity({ name: 'users' })
 export class UserEntity extends BaseEntity {
   /** Tài khoản đăng nhập */
   @Column()
@@ -19,4 +26,26 @@ export class UserEntity extends BaseEntity {
     // this.password = await hash(this.password);
     console.log('beforeInsert');
   }
+
+  @OneToMany(() => MessageEntity, (mess) => mess.userId)
+  messageEntities: MessageEntity[];
+
+  @OneToMany(() => NotificationEntity, (Notification) => Notification.userId)
+  notificationEntities: NotificationEntity[];
+
+  @OneToOne(() => ProfileEntity)
+  @JoinColumn()
+  profileEntity: ProfileEntity;
+
+
+  @OneToOne(() => RoleEntity)
+  @JoinColumn()
+  roleEntity: RoleEntity;
+
+  @OneToMany(() => AttachmentsEntity, (Attachment) => Attachment.userId)
+  attachmentEntities: AttachmentsEntity[];
+
+  @OneToMany(() => UserConversationEntity,(UserConversations)=>UserConversations.userId )
+
+  userConversationEntities: UserConversationEntity[];
 }
