@@ -3,8 +3,11 @@ import { Column, Entity } from 'typeorm';
 
 @Entity({ name: 'profiles' })
 export class ProfileEntity extends BaseEntity {
+  // @Column()
+  // @UUID()
+  // id:string;
   @Column()
-  firtName: string;
+  firstName: string;
   @Column()
   lastName: string;
   @Column()
@@ -14,11 +17,11 @@ export class ProfileEntity extends BaseEntity {
   @Column()
   gender: string;
   @Column()
-  Bio: string;
+  bio: string;
   @Column()
   lastActive: Date;
   @Column()
-  Address: string;
+  address: string;
   @Column()
-  Email: string;
+  email: string;
 }

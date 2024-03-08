@@ -7,7 +7,9 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class MessageRepository extends BaseAbstractRepostitory<MessageEntity> implements MessageRepositoryInterface {
-    constructor(@InjectRepository(MessageEntity) private readonly messageReponsitory: Repository<MessageEntity>) {
-      super(messageReponsitory);
+  constructor(@InjectRepository(MessageEntity) private readonly messageReponsitory: Repository<MessageEntity>) {
+    super(messageReponsitory);
   }
 }
+
+

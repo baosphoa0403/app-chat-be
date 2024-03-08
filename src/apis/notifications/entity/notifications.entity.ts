@@ -1,8 +1,15 @@
 import { BaseEntity } from '@app/common/base/base.entity';
-import { Column, Entity } from 'typeorm';
+import { Column, Entity, ManyToOne } from 'typeorm';
+import { UserEntity } from '@apis/user/entity/user.entity';
 
 @Entity({ name: 'notifications' })
-export class NotificationEntiy extends BaseEntity {
+export class NotificationEntity extends BaseEntity {
   @Column()
   content: string;
+
+  @Column()
+  userId: string;
+
+  @ManyToOne(() => UserEntity, (user) => user.notificationEntities)
+  user: UserEntity;
 }
