@@ -11,5 +11,5 @@ export class NotificationEntity extends BaseEntity {
   userId: string;
 
   @ManyToOne(() => UserEntity, (user) => user.notificationEntities)
-  user: UserEntity;
+  userEntity: UserEntity;
 }

@@ -3,9 +3,7 @@ import { Column, Entity } from 'typeorm';
 
 @Entity({ name: 'profiles' })
 export class ProfileEntity extends BaseEntity {
-  // @Column()
-  // @UUID()
-  // id:string;
+
   @Column()
   firstName: string;
   @Column()

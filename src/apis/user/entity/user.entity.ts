@@ -7,7 +7,7 @@ import { ProfileEntity } from '@apis/profile/entity/profile.entity';
 import { AttachmentsEntity } from '@apis/attachments/entity/attachments.entity';
 import { RoleEntity } from '@apis/role/entity/role.entity';
 import { UserConversationEntity } from '@apis/user-conversations/entity/user-conversations.entity';
-import { UserConversationsModule } from '@apis/user-conversations/user-conversations.module';
+
 
 @Entity({ name: 'users' })
 export class UserEntity extends BaseEntity {
@@ -26,7 +26,7 @@ export class UserEntity extends BaseEntity {
     // this.password = await hash(this.password);
     console.log('beforeInsert');
   }
-  // @AutoMap()
+
   @OneToMany(() => MessageEntity, (mess) => mess.userId)
   messageEntities: MessageEntity[];
 
