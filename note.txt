@@ -18,7 +18,7 @@ docker ps -a
 xem resource may host 
 docker container stats 
 
-open shell bên trong container 
-docker exec -it idContainer sh 
+open shell bên trong container
+docker exec -it idContainer sh
 
 

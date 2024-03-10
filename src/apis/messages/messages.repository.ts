@@ -11,5 +11,3 @@ export class MessageRepository extends BaseAbstractRepostitory<MessageEntity> im
     super(messageReponsitory);
   }
 }
-
-

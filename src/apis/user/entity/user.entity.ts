@@ -1,5 +1,4 @@
-import { BeforeInsert, Column, Entity, OneToMany, OneToOne, JoinColumn } from 'typeorm';
-import { Exclude } from 'class-transformer';
+import { Column, Entity, OneToMany, OneToOne, JoinColumn, ManyToOne } from 'typeorm';
 import { BaseEntity } from '@app/common/base/base.entity';
 import { MessageEntity } from '@apis/messages/entity/messages.entity';
 import { NotificationEntity } from '@apis/notifications/entity/notifications.entity';
@@ -8,44 +7,37 @@ import { AttachmentsEntity } from '@apis/attachments/entity/attachments.entity';
 import { RoleEntity } from '@apis/role/entity/role.entity';
 import { UserConversationEntity } from '@apis/user-conversations/entity/user-conversations.entity';
 
-
 @Entity({ name: 'users' })
 export class UserEntity extends BaseEntity {
-  /** Tài khoản đăng nhập */
+  @Column({ unique: true })
+  username: string;
+
   @Column()
-  username!: string;
+  password: string;
 
-  /** Mật khẩu */
-  // @ApiHideProperty()
-  @Column()
-  @Exclude()
-  password!: string;
+  @Column({ name: 'role_id' })
+  roleId: string;
 
-  @BeforeInsert()
-  async beforeInsert() {
-    // this.password = await hash(this.password);
-    console.log('beforeInsert');
-  }
-
-  @OneToMany(() => MessageEntity, (mess) => mess.userId)
-  messageEntities: MessageEntity[];
-
-  @OneToMany(() => NotificationEntity, (Notification) => Notification.userId)
-  notificationEntities: NotificationEntity[];
+  @Column({ name: 'profile_id', nullable: true })
+  profileId: string;
 
   @OneToOne(() => ProfileEntity)
-  @JoinColumn()
+  @JoinColumn({ name: 'profile_id', referencedColumnName: 'id' })
   profileEntity: ProfileEntity;
 
-
-  @OneToOne(() => RoleEntity)
-  @JoinColumn()
+  @ManyToOne(() => RoleEntity, (role) => role.userEntities)
+  @JoinColumn({ name: 'role_id', referencedColumnName: 'id' })
   roleEntity: RoleEntity;
 
-  @OneToMany(() => AttachmentsEntity, (Attachment) => Attachment.userId)
+  @OneToMany(() => MessageEntity, (mess) => mess.userEntity)
+  messageEntities: MessageEntity[];
+
+  @OneToMany(() => NotificationEntity, (Notification) => Notification.userEntity)
+  notificationEntities: NotificationEntity[];
+
+  @OneToMany(() => AttachmentsEntity, (Attachment) => Attachment.userEntity)
   attachmentEntities: AttachmentsEntity[];
 
-  @OneToMany(() => UserConversationEntity,(UserConversations)=>UserConversations.userId )
-
+  @OneToMany(() => UserConversationEntity, (UserConversations) => UserConversations.userEntity)
   userConversationEntities: UserConversationEntity[];
 }

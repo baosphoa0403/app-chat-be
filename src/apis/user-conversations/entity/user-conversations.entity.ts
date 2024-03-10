@@ -1,22 +1,27 @@
-import { Column, Entity, ManyToOne, OneToMany } from 'typeorm';
-import { BaseEntity } from '@app/common/base/base.entity';
+import { CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from 'typeorm';
 import { UserEntity } from '@apis/user/entity/user.entity';
 import { ConversationEntity } from '@apis/conversations/entity/conversations.entity';
-import { MessageEntity } from '@apis/messages/entity/messages.entity';
+import { BaseEntity as TypeormBaseEntity } from 'typeorm/repository/BaseEntity';
 
-@Entity({ name: 'user-conversation' })
-export class UserConversationEntity extends BaseEntity {
-  @Column()
+@Entity({ name: 'user_conversation' })
+export class UserConversationEntity extends TypeormBaseEntity {
+  @PrimaryColumn({ name: 'user_id' })
   userId: string;
-  @Column()
+
+  @PrimaryColumn({ name: 'conversation_id' })
   conversationID: string;
 
   @ManyToOne(() => UserEntity, (user) => user.userConversationEntities)
+  @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
   userEntity: UserEntity;
 
   @ManyToOne(() => ConversationEntity, (conversation) => conversation.userConversationEntities)
+  @JoinColumn({ name: 'conversation_id', referencedColumnName: 'id' })
   conversationEntity: ConversationEntity;
 
-  @OneToMany(() => MessageEntity, (mess) => mess.userId)
-  messageEntities: MessageEntity[];
+  @CreateDateColumn()
+  createdAt: Date;
+
+  @UpdateDateColumn()
+  updatedAt: Date;
 }

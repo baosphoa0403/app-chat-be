@@ -1,5 +1,4 @@
 import { InjectRepository } from '@nestjs/typeorm';
-
 import { Repository } from 'typeorm';
 import { UserEntity } from '@apis/user/entity/user.entity';
 import { BaseAbstractRepostitory } from '@app/common/base/base.repository';
@@ -12,7 +11,11 @@ export class UserRepository extends BaseAbstractRepostitory<UserEntity> implemen
     super(userRepository);
   }
 
-  findName(name: string): Promise<UserEntity> {
+  findName(): Promise<UserEntity> {
     throw new Error('Method not implemented.');
+  }
+
+  async findUserRoleByName(username: string): Promise<UserEntity> {
+      return await this.userRepository.createQueryBuilder('user').leftJoinAndSelect('user.roleEntity', 'roleEntity').where('user.username = :username', { username }).getOne();
   }
 }
