@@ -6,9 +6,11 @@ import { ConversationsModule } from '@apis/conversations/conversations.module';
 import { AttachmentsModule } from '@apis/attachments/attachments.module';
 import { RoleModule } from '@apis/role/role.module';
 import { ProfileModule } from '@apis/profile/profile.module';
-import { UserConversationsModule } from './user-conversations/user-conversations.module';
+import { UserConversationsModule } from '@apis/user-conversations/user-conversations.module';
+import { AuthModule } from '@apis/auth/auth.module';
 
 @Module({
-  imports: [UserModule, RoleModule, MessagesModule, NotificationsModule, ConversationsModule, AttachmentsModule, ProfileModule, UserConversationsModule]
+  imports: [AuthModule, UserModule, RoleModule, MessagesModule, NotificationsModule, ConversationsModule, AttachmentsModule, ProfileModule, UserConversationsModule],
+  exports: [AuthModule, UserModule, RoleModule, MessagesModule, NotificationsModule, ConversationsModule, AttachmentsModule, ProfileModule, UserConversationsModule],
 })
 export class ApiModule {}
