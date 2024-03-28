@@ -1,3 +1,4 @@
+
 import { BaseEntity } from '@app/common/base/base.entity';
 import { ERole } from '@app/common/enum/role';
 
@@ -26,6 +27,7 @@ export interface BaseAuthService {
 export class BaseAuthEntity extends BaseEntity {
   username!: string;
   password!: string;
+
 }
 
 export interface Payload {

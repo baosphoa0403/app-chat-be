@@ -1,3 +1,4 @@
+
 import { Body, Controller, Get, Post, Res } from '@nestjs/common';
 import { AuthService } from '@apis/auth/auth.service';
 import { LoginDto } from '@apis/auth/dto/login.dto';
@@ -5,7 +6,9 @@ import { Public } from '@apis/auth/contants';
 import { Response } from 'express';
 import { ApiCookieAuth, ApiTags } from '@nestjs/swagger';
 import { SignUpDTO } from '@apis/user/dto/user.dto';
+
 import { User } from '@app/decocrator/user.decorator';
+
 
 @Controller('auth')
 @ApiCookieAuth()
@@ -19,6 +22,7 @@ export class AuthController {
     const { access_token } = await this.authService.login(body);
     response
       .cookie('access_token', access_token, {
+
         path:'/',
         // domain:'http://127.0.0.1',
         // tìm hiếu thêm
@@ -27,6 +31,7 @@ export class AuthController {
         secure:true , //sent over HTTPS connections
         // tìm hiểu thêm
         sameSite: 'none',
+
         expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
       })
       .send({ status: 'ok' });
@@ -44,10 +49,10 @@ export class AuthController {
   }
 
 
+
   @Get('me')
   async getMe(@User() user) {
     return JSON.parse(user);
   }
-
 
 }
