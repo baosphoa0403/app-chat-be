@@ -1,3 +1,4 @@
+
 import { BaseEntity } from '@app/common/base/base.entity';
 import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
 import { UserEntity } from '@apis/user/entity/user.entity';
