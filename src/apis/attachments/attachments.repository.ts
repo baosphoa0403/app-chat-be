@@ -1,4 +1,4 @@
-import { BaseAbstractRepostitory } from '@app/common/base/base.repository';
+import { BaseAbstractRepository } from '@app/common/base/base.repository';
 import { Injectable } from '@nestjs/common';
 import { AttachmentsEntity } from './entity/attachments.entity';
 import { InjectRepository } from '@nestjs/typeorm';
@@ -7,7 +7,7 @@ import { AttachmentsRepositoryInterface } from './attachments.interface';
 
 @Injectable()
 export class AttachmentsRepository
-  extends BaseAbstractRepostitory<AttachmentsEntity>
+  extends BaseAbstractRepository<AttachmentsEntity>
   implements AttachmentsRepositoryInterface
 {
   constructor(
