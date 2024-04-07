@@ -1,5 +1,13 @@
-import { BaseEntity } from '@app/common/base/base.entity';
-import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToOne,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+} from 'typeorm';
 import { UserEntity } from '@apis/user/entity/user.entity';
 import { ConversationEntity } from '@apis/conversations/entity/conversations.entity';
 import { BaseEntity as TypeormBaseEntity } from 'typeorm/repository/BaseEntity';
@@ -23,6 +31,10 @@ export class MessageEntity extends TypeormBaseEntity {
 
   @UpdateDateColumn()
   updatedAt: Date;
+
+  @OneToOne(() => MessageEntity, (message) => message.messageEntity)
+  @JoinColumn()
+  messageEntity: MessageEntity;
 
   @ManyToOne(() => UserEntity, (user) => user.messageEntities)
   @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })

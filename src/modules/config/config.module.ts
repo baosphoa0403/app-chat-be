@@ -12,14 +12,12 @@ import configuration from './configuration';
       validationSchema: Joi.object({
         NODE_ENV: Joi.string(),
         APP_PORT: Joi.number(),
-
         POSTGRES_HOST: Joi.string(),
         POSTGRES_PORT: Joi.number(),
         POSTGRES_USER: Joi.string().required(),
         POSTGRES_PASSWORD: Joi.string().required(),
         POSTGRES_DB: Joi.string().required(),
         DB_SCHEMA: Joi.string().required(),
-
         SECRET_JWT: Joi.string().required(),
         JWT_EXPIRES_IN: Joi.string().required(),
       }),

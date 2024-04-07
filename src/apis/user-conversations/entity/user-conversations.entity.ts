@@ -1,7 +1,8 @@
-import { CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryColumn, UpdateDateColumn } from 'typeorm';
 import { UserEntity } from '@apis/user/entity/user.entity';
 import { ConversationEntity } from '@apis/conversations/entity/conversations.entity';
 import { BaseEntity as TypeormBaseEntity } from 'typeorm/repository/BaseEntity';
+import { EStatus } from '@app/common/enum/status-userconversation';
 
 @Entity({ name: 'user_conversation' })
 export class UserConversationEntity extends TypeormBaseEntity {
@@ -10,6 +11,9 @@ export class UserConversationEntity extends TypeormBaseEntity {
 
   @PrimaryColumn({ name: 'conversation_id' })
   conversationID: string;
+
+  @Column()
+  status:EStatus;
 
   @ManyToOne(() => UserEntity, (user) => user.userConversationEntities)
   @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })

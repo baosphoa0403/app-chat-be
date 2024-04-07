@@ -3,16 +3,19 @@ import { AppModule } from './app.module';
 import { ConfigService } from '@nestjs/config';
 import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import * as cookieParser from 'cookie-parser';
+import * as process from 'process';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
-
   app.use(cookieParser());
-
   const configService = app.get(ConfigService);
   const port = configService.get('port');
   const env = configService.get('NODE_ENV');
-
+  app.enableCors({
+    origin:configService.get('FE_URL'),
+    credentials:true,
+    methods: "GET,PUT,POST,DELETE,UPDATE,OPTIONS",
+  });
   const config = new DocumentBuilder()
     .addCookieAuth('optional-session-id')
     .setTitle('app chat be')
@@ -23,7 +26,6 @@ async function bootstrap() {
 
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('/api', app, document);
-
   await app.listen(port, () => {
     console.info(`Server running environment ${env} on port ${port}`);
   });
