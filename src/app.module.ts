@@ -22,11 +22,11 @@ import { ApiModule } from '@apis/api.module';
     {
       provide: APP_GUARD,
       useClass: RolesGuard
+    },
+    {
+      provide: APP_FILTER,
+      useClass: AllExceptionsFilter
     }
-    // {
-    //   provide: APP_FILTER,
-    //   useClass: AllExceptionsFilter
-    // }
   ]
 })
 export class AppModule {}

@@ -6,10 +6,7 @@ import { UserRepositoryInterface } from '@apis/user/user.interface';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class UserRepository
-  extends BaseAbstractRepostitory<UserEntity>
-  implements UserRepositoryInterface
-{
+export class UserRepository extends BaseAbstractRepostitory<UserEntity> implements UserRepositoryInterface {
   constructor(
     @InjectRepository(UserEntity)
     private readonly userRepository: Repository<UserEntity>

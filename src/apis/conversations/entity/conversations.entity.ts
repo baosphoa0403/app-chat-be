@@ -8,10 +8,7 @@ export class ConversationEntity extends BaseEntity {
   @Column()
   name: string;
 
-  @OneToMany(
-    () => UserConversationEntity,
-    (UserConversations) => UserConversations.conversationID
-  )
+  @OneToMany(() => UserConversationEntity, (UserConversations) => UserConversations.conversationID)
   userConversationEntities: UserConversationEntity[];
 
   @OneToMany(() => MessageEntity, (messageEntity) => messageEntity)

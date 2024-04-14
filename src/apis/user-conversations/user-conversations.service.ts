@@ -3,7 +3,5 @@ import { UserConversationsRepository } from '@apis/user-conversations/user-conve
 
 @Injectable()
 export class UserConversationsService {
-  constructor(
-    private readonly userConversationsRepository: UserConversationsRepository
-  ) {}
+  constructor(private readonly userConversationsRepository: UserConversationsRepository) {}
 }

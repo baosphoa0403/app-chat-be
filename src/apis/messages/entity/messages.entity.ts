@@ -40,10 +40,7 @@ export class MessageEntity extends TypeormBaseEntity {
   @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
   userEntity: UserEntity;
 
-  @ManyToOne(
-    () => ConversationEntity,
-    (conversation) => conversation.userConversationEntities
-  )
+  @ManyToOne(() => ConversationEntity, (conversation) => conversation.userConversationEntities)
   @JoinColumn({ name: 'conversation_id', referencedColumnName: 'id' })
   conversationEntity: ConversationEntity;
 }

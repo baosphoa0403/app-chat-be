@@ -15,6 +15,7 @@ async function bootstrap() {
     credentials: true,
     methods: 'GET,PUT,POST,DELETE,UPDATE,OPTIONS'
   });
+
   const config = new DocumentBuilder()
     .addCookieAuth('optional-session-id')
     .setTitle('app chat be')

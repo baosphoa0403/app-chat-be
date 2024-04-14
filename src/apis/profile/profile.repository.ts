@@ -6,10 +6,7 @@ import { ProfileEntity } from '@apis/profile/entity/profile.entity';
 import { ProfileRepositoryInterface } from '@apis/profile/profile.interface';
 
 @Injectable()
-export class ProfileRepository
-  extends BaseAbstractRepostitory<ProfileEntity>
-  implements ProfileRepositoryInterface
-{
+export class ProfileRepository extends BaseAbstractRepostitory<ProfileEntity> implements ProfileRepositoryInterface {
   constructor(
     @InjectRepository(ProfileEntity)
     private readonly profileRepository: Repository<ProfileEntity>

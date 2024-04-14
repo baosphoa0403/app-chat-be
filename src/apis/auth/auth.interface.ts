@@ -8,10 +8,7 @@ export interface BaseAuthService {
    * @return Promise<BaseAuthEntity>
    * @example this.authService.getService('user').validateUserByUsernamePassword(username, password)
    */
-  validateUserByUsernamePassword(
-    username: string,
-    password: string
-  ): Promise<BaseAuthEntity>;
+  validateUserByUsernamePassword(username: string, password: string): Promise<BaseAuthEntity>;
 
   /**
    * Kiểm tra và trả về một user
