@@ -19,9 +19,9 @@ import configuration from './configuration';
         POSTGRES_DB: Joi.string().required(),
         DB_SCHEMA: Joi.string().required(),
         SECRET_JWT: Joi.string().required(),
-        JWT_EXPIRES_IN: Joi.string().required(),
-      }),
-    }),
-  ],
+        JWT_EXPIRES_IN: Joi.string().required()
+      })
+    })
+  ]
 })
 export class ConfigModule {}

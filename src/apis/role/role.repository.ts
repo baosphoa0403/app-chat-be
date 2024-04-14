@@ -7,7 +7,10 @@ import { Repository } from 'typeorm';
 
 @Injectable()
 export class RoleRepository extends BaseAbstractRepostitory<RoleEntity> implements RoleRepositoryInterface {
-  constructor(@InjectRepository(RoleEntity) private readonly roleRepository: Repository<RoleEntity>) {
+  constructor(
+    @InjectRepository(RoleEntity)
+    private readonly roleRepository: Repository<RoleEntity>
+  ) {
     super(roleRepository);
   }
 }

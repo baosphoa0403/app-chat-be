@@ -6,7 +6,7 @@ import {
   ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
-  UpdateDateColumn,
+  UpdateDateColumn
 } from 'typeorm';
 import { UserEntity } from '@apis/user/entity/user.entity';
 import { ConversationEntity } from '@apis/conversations/entity/conversations.entity';

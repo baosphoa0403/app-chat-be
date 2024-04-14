@@ -1,16 +1,8 @@
-import {
-  BaseEntity,
-  DeepPartial,
-  FindOneOptions,
-  FindOptionsWhere,
-  Repository,
-} from 'typeorm';
+import { BaseEntity, DeepPartial, FindOneOptions, FindOptionsWhere, Repository } from 'typeorm';
 import { FindManyOptions } from 'typeorm/find-options/FindManyOptions';
 import { BaseInterfaceRepository } from '@app/common/base/base.interface';
 
-export abstract class BaseAbstractRepostitory<T extends BaseEntity>
-  implements BaseInterfaceRepository<T>
-{
+export abstract class BaseAbstractRepostitory<T extends BaseEntity> implements BaseInterfaceRepository<T> {
   private entity: Repository<T>;
 
   protected constructor(entity: Repository<T>) {

@@ -14,9 +14,8 @@ export class RoleService {
 
   async create(dto: RoleDto) {
     const partialEntity: DeepPartial<RoleEntity> = {
-      name: dto.name,
+      name: dto.name
     };
     return await this.roleRepository.save(partialEntity);
   }
-
 }

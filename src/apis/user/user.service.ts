@@ -22,7 +22,7 @@ export class UserService {
   async findById(userId: string) {
     return await this.userRepository.findByCondition({
       where: { id: userId },
-      relations: { roleEntity: true },
+      relations: { roleEntity: true }
     });
   }
 
@@ -30,7 +30,7 @@ export class UserService {
     const payload = {
       username: dto.username,
       password: dto.password,
-      roleEntity,
+      roleEntity
     };
     return await this.userRepository.save(payload);
   }

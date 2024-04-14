@@ -9,6 +9,6 @@ import { AttachmentsEntity } from '@apis/attachments/entity/attachments.entity';
   imports: [TypeOrmModule.forFeature([AttachmentsEntity])],
   providers: [AttachmentsService, AttachmentsRepository],
   controllers: [AttachmentsController],
-  exports: [AttachmentsService],
+  exports: [AttachmentsService]
 })
 export class AttachmentsModule {}

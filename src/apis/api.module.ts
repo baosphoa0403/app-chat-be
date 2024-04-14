@@ -10,7 +10,27 @@ import { UserConversationsModule } from '@apis/user-conversations/user-conversat
 import { AuthModule } from '@apis/auth/auth.module';
 
 @Module({
-  imports: [AuthModule, UserModule, RoleModule, MessagesModule, NotificationsModule, ConversationsModule, AttachmentsModule, ProfileModule, UserConversationsModule],
-  exports: [AuthModule, UserModule, RoleModule, MessagesModule, NotificationsModule, ConversationsModule, AttachmentsModule, ProfileModule, UserConversationsModule],
+  imports: [
+    AuthModule,
+    UserModule,
+    RoleModule,
+    MessagesModule,
+    NotificationsModule,
+    ConversationsModule,
+    AttachmentsModule,
+    ProfileModule,
+    UserConversationsModule
+  ],
+  exports: [
+    AuthModule,
+    UserModule,
+    RoleModule,
+    MessagesModule,
+    NotificationsModule,
+    ConversationsModule,
+    AttachmentsModule,
+    ProfileModule,
+    UserConversationsModule
+  ]
 })
 export class ApiModule {}

@@ -13,7 +13,7 @@ export class UserConversationEntity extends TypeormBaseEntity {
   conversationID: string;
 
   @Column()
-  status:EStatus;
+  status: EStatus;
 
   @ManyToOne(() => UserEntity, (user) => user.userConversationEntities)
   @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })

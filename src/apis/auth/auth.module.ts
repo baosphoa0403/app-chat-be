@@ -8,6 +8,6 @@ import { RoleModule } from '@apis/role/role.module';
   imports: [UserModule, RoleModule],
   providers: [AuthService],
   exports: [AuthService],
-  controllers: [AuthController],
+  controllers: [AuthController]
 })
 export class AuthModule {}

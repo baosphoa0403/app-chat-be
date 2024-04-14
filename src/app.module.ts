@@ -17,16 +17,16 @@ import { ApiModule } from '@apis/api.module';
     AppService,
     {
       provide: APP_GUARD,
-      useClass: AuthGuard,
+      useClass: AuthGuard
     },
     {
       provide: APP_GUARD,
-      useClass: RolesGuard,
+      useClass: RolesGuard
     },
     {
       provide: APP_FILTER,
-      useClass: AllExceptionsFilter,
-    },
-  ],
+      useClass: AllExceptionsFilter
+    }
+  ]
 })
 export class AppModule {}

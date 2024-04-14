@@ -11,11 +11,11 @@ import { ConfigModule } from '@modules/config/config.module';
       useFactory: async (configService: ConfigService) => {
         return {
           secret: configService.get('jwt.secret'),
-          signOptions: { expiresIn: configService.get('jwt.expiresIn') },
+          signOptions: { expiresIn: configService.get('jwt.expiresIn') }
         };
       },
-      inject: [ConfigService],
-    }),
-  ],
+      inject: [ConfigService]
+    })
+  ]
 })
 export class JwtModuleShared {}

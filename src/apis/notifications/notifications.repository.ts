@@ -6,8 +6,14 @@ import { NotificationsRepositoyInterface } from './notifications.interface';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class NotificationRepository extends BaseAbstractRepostitory<NotificationEntity> implements NotificationsRepositoyInterface {
-  constructor(@InjectRepository(NotificationEntity) private readonly notificationRepository: Repository<NotificationEntity>) {
+export class NotificationRepository
+  extends BaseAbstractRepostitory<NotificationEntity>
+  implements NotificationsRepositoyInterface
+{
+  constructor(
+    @InjectRepository(NotificationEntity)
+    private readonly notificationRepository: Repository<NotificationEntity>
+  ) {
     super(notificationRepository);
   }
 }

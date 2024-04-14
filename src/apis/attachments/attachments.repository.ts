@@ -6,8 +6,14 @@ import { Repository } from 'typeorm';
 import { AttachmentsRepositoryInterface } from './attachments.interface';
 
 @Injectable()
-export class AttachmentsRepository extends BaseAbstractRepostitory<AttachmentsEntity> implements AttachmentsRepositoryInterface {
-  constructor(@InjectRepository(AttachmentsEntity) private readonly attachmentRepository: Repository<AttachmentsEntity>) {
+export class AttachmentsRepository
+  extends BaseAbstractRepostitory<AttachmentsEntity>
+  implements AttachmentsRepositoryInterface
+{
+  constructor(
+    @InjectRepository(AttachmentsEntity)
+    private readonly attachmentRepository: Repository<AttachmentsEntity>
+  ) {
     super(attachmentRepository);
   }
 }
