@@ -15,19 +15,22 @@ export class AuthController {
 
   @Public()
   @Post('login')
-  async login(@Body() body: LoginDto, @Res({ passthrough: true }) response: Response) {
+  async login(
+    @Body() body: LoginDto,
+    @Res({ passthrough: true }) response: Response
+  ) {
     const { access_token } = await this.authService.login(body);
     response
       .cookie('access_token', access_token, {
-        path:'/',
+        path: '/',
         // domain:'http://127.0.0.1',
         // tìm hiếu thêm
         httpOnly: true, //cross-site scripting (XSS) attacks
         // tìm hiểu thêm
-        secure:true , //sent over HTTPS connections
+        secure: true, //sent over HTTPS connections
         // tìm hiểu thêm
         sameSite: 'none',
-        expires: new Date(Date.now() + 24 * 60 * 60 * 1000),
+        expires: new Date(Date.now() + 24 * 60 * 60 * 1000)
       })
       .send({ status: 'ok' });
   }

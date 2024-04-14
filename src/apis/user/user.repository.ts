@@ -6,8 +6,14 @@ import { UserRepositoryInterface } from '@apis/user/user.interface';
 import { Injectable } from '@nestjs/common';
 
 @Injectable()
-export class UserRepository extends BaseAbstractRepostitory<UserEntity> implements UserRepositoryInterface {
-  constructor(@InjectRepository(UserEntity) private readonly userRepository: Repository<UserEntity>) {
+export class UserRepository
+  extends BaseAbstractRepostitory<UserEntity>
+  implements UserRepositoryInterface
+{
+  constructor(
+    @InjectRepository(UserEntity)
+    private readonly userRepository: Repository<UserEntity>
+  ) {
     super(userRepository);
   }
 
@@ -16,6 +22,10 @@ export class UserRepository extends BaseAbstractRepostitory<UserEntity> implemen
   }
 
   async findUserRoleByName(username: string): Promise<UserEntity> {
-      return await this.userRepository.createQueryBuilder('user').leftJoinAndSelect('user.roleEntity', 'roleEntity').where('user.username = :username', { username }).getOne();
+    return await this.userRepository
+      .createQueryBuilder('user')
+      .leftJoinAndSelect('user.roleEntity', 'roleEntity')
+      .where('user.username = :username', { username })
+      .getOne();
   }
 }

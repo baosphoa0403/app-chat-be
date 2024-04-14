@@ -3,7 +3,7 @@ import {
   DeepPartial,
   FindOneOptions,
   FindOptionsWhere,
-  Repository,
+  Repository
 } from 'typeorm';
 import { FindManyOptions } from 'typeorm/find-options/FindManyOptions';
 import { BaseInterfaceRepository } from '@app/common/base/base.interface';

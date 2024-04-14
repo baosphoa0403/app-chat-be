@@ -1,5 +1,9 @@
-
-import { BadRequestException, HttpException, HttpStatus, Injectable } from '@nestjs/common';
+import {
+  BadRequestException,
+  HttpException,
+  HttpStatus,
+  Injectable
+} from '@nestjs/common';
 import { UserService } from '@apis/user/user.service';
 import { LoginDto } from '@apis/auth/dto/login.dto';
 import * as bcrypt from 'bcrypt';
@@ -14,7 +18,7 @@ export class AuthService {
   constructor(
     private readonly userService: UserService,
     private jwtService: JwtService,
-    private roleService: RoleService,
+    private roleService: RoleService
   ) {}
 
   async login(dto: LoginDto) {
@@ -28,7 +32,7 @@ export class AuthService {
     const isMatch = await bcrypt.compare(password, user.password);
     if (user && isMatch) {
       const payload: Payload = {
-        id: user.id,
+        id: user.id
       };
       return { access_token: this.jwtService.sign(payload) };
     }

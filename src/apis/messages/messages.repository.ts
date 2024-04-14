@@ -6,8 +6,14 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
 @Injectable()
-export class MessageRepository extends BaseAbstractRepostitory<MessageEntity> implements MessageRepositoryInterface {
-  constructor(@InjectRepository(MessageEntity) private readonly messageReponsitory: Repository<MessageEntity>) {
+export class MessageRepository
+  extends BaseAbstractRepostitory<MessageEntity>
+  implements MessageRepositoryInterface
+{
+  constructor(
+    @InjectRepository(MessageEntity)
+    private readonly messageReponsitory: Repository<MessageEntity>
+  ) {
     super(messageReponsitory);
   }
 }

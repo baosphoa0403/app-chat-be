@@ -6,8 +6,14 @@ import { Repository } from 'typeorm';
 import { UserConversationsRepositoryInterface } from '@apis/user-conversations/user-conversations.interface';
 
 @Injectable()
-export class UserConversationsRepository extends BaseAbstractRepostitory<UserConversationEntity> implements UserConversationsRepositoryInterface {
-  constructor(@InjectRepository(UserConversationEntity) private readonly userConversationRepository: Repository<UserConversationEntity>) {
+export class UserConversationsRepository
+  extends BaseAbstractRepostitory<UserConversationEntity>
+  implements UserConversationsRepositoryInterface
+{
+  constructor(
+    @InjectRepository(UserConversationEntity)
+    private readonly userConversationRepository: Repository<UserConversationEntity>
+  ) {
     super(userConversationRepository);
   }
 }

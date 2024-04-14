@@ -1,4 +1,11 @@
-import { Column, Entity, OneToMany, OneToOne, JoinColumn, ManyToOne } from 'typeorm';
+import {
+  Column,
+  Entity,
+  OneToMany,
+  OneToOne,
+  JoinColumn,
+  ManyToOne
+} from 'typeorm';
 import { BaseEntity } from '@app/common/base/base.entity';
 import { MessageEntity } from '@apis/messages/entity/messages.entity';
 import { NotificationEntity } from '@apis/notifications/entity/notifications.entity';
@@ -32,12 +39,18 @@ export class UserEntity extends BaseEntity {
   @OneToMany(() => MessageEntity, (mess) => mess.userEntity)
   messageEntities: MessageEntity[];
 
-  @OneToMany(() => NotificationEntity, (Notification) => Notification.userEntity)
+  @OneToMany(
+    () => NotificationEntity,
+    (Notification) => Notification.userEntity
+  )
   notificationEntities: NotificationEntity[];
 
   @OneToMany(() => AttachmentsEntity, (Attachment) => Attachment.userEntity)
   attachmentEntities: AttachmentsEntity[];
 
-  @OneToMany(() => UserConversationEntity, (UserConversations) => UserConversations.userEntity)
+  @OneToMany(
+    () => UserConversationEntity,
+    (UserConversations) => UserConversations.userEntity
+  )
   userConversationEntities: UserConversationEntity[];
 }

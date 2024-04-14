@@ -7,10 +7,10 @@ export default () => ({
     username: process.env.POSTGRES_USER,
     password: process.env.POSTGRES_PASSWORD,
     db: process.env.POSTGRES_DB,
-    schema: process.env.DB_SCHEMA,
+    schema: process.env.DB_SCHEMA
   },
   jwt: {
     secret: process.env.SECRET_JWT,
-    expiresIn: process.env.JWT_EXPIRES_IN,
-  },
+    expiresIn: process.env.JWT_EXPIRES_IN
+  }
 });

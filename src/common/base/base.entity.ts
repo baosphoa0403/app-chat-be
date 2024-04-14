@@ -1,4 +1,11 @@
-import { Column, CreateDateColumn, DeleteDateColumn, PrimaryGeneratedColumn, UpdateDateColumn, BaseEntity as TypeormBaseEntity } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  PrimaryGeneratedColumn,
+  UpdateDateColumn,
+  BaseEntity as TypeormBaseEntity
+} from 'typeorm';
 
 export class BaseEntity extends TypeormBaseEntity {
   /** uuid */

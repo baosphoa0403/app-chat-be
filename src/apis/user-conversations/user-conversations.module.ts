@@ -9,6 +9,6 @@ import { UserConversationsService } from '@apis/user-conversations/user-conversa
   imports: [TypeOrmModule.forFeature([UserConversationEntity])],
   controllers: [UserConversationsController],
   providers: [UserConversationsService, UserConversationsRepository],
-  exports: [UserConversationsService],
+  exports: [UserConversationsService]
 })
 export class UserConversationsModule {}

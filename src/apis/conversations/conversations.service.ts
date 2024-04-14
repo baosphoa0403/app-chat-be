@@ -3,5 +3,7 @@ import { ConversationRepository } from './conversations.repository';
 
 @Injectable()
 export class ConversationsService {
-  constructor(private readonly conversationRepository: ConversationRepository) {}
+  constructor(
+    private readonly conversationRepository: ConversationRepository
+  ) {}
 }

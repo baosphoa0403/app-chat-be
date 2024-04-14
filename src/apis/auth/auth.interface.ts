@@ -1,5 +1,4 @@
 import { BaseEntity } from '@app/common/base/base.entity';
-import { ERole } from '@app/common/enum/role';
 
 export interface BaseAuthService {
   /**
@@ -11,7 +10,7 @@ export interface BaseAuthService {
    */
   validateUserByUsernamePassword(
     username: string,
-    password: string,
+    password: string
   ): Promise<BaseAuthEntity>;
 
   /**

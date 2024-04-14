@@ -18,10 +18,10 @@ import { ConfigService } from '@nestjs/config';
           autoLoadEntities: true,
           migrationsTableName: `migrations`,
           synchronize: true,
-          logging: true,
+          logging: true
         };
-      },
-    }),
-  ],
+      }
+    })
+  ]
 })
 export class DatabaseModule {}

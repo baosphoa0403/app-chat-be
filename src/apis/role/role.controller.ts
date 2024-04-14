@@ -10,7 +10,7 @@ export class RoleController {
   constructor(private roleService: RoleService) {}
   @Public()
   @Post('role')
-  async createRole(@Body() body:RoleDto){
+  async createRole(@Body() body: RoleDto) {
     return this.roleService.create(body);
   }
 }
