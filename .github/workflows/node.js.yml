@@ -44,6 +44,7 @@ jobs:
           key: ${{ secrets.SSH_PASSWORD }}
           port: 22
           script: |
+            cd be
             docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_ACCESS_TOKEN }}
             docker rmi ${{ secrets.DOCKER_USERNAME }}/app-chat-be:latest;
             # docker pull ${{ secrets.DOCKER_USERNAME }}/app-chat-be:latest;
