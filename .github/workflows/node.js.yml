@@ -27,7 +27,9 @@ jobs:
         env: 
             username: ${{ secrets.DOCKERHUB_USERNAME }}
             password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
-        run: echo $username - $password
+        run: | 
+              echo $username - $password
+              echo ${{ secrets.DOCKERHUB_USERNAME }} - ${{ secrets.DOCKER_ACCESS_TOKEN }}
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Login to Docker Hub
@@ -43,7 +45,7 @@ jobs:
           context: .
           file: ./Dockerfile
           push: true
-          tags: ${{ secrets.DOCKER_USERNAME }}/app-chat-be:latest
+          tags: giabao0403/app-chat-be:latest
   deploy:
     runs-on: ubuntu-latest
     name: Continuous Deployment
