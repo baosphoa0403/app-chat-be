@@ -50,5 +50,6 @@ jobs:
             # docker pull ${{ secrets.DOCKER_USERNAME }}/app-chat-be:latest;
             # docker stop app-chat-be;
             docker compose up -d
+            docker images prune
 
 
