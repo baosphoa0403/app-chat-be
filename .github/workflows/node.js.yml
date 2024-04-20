@@ -48,6 +48,6 @@ jobs:
             docker rmi ${{ secrets.DOCKER_USERNAME }}/app-chat-be:latest;
             # docker pull ${{ secrets.DOCKER_USERNAME }}/app-chat-be:latest;
             # docker stop app-chat-be;
-            docker-compose up -d
+            docker compose up -d
 
 
