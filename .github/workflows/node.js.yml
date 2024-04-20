@@ -8,37 +8,22 @@ on:
     branches: [ "main" ]
 
 jobs:
-  # build:
-
-  #   runs-on: self-hosted
-  #   name: Countinous Intergration Test 
-  #   steps: 
-  #   - uses: actions/checkout@v2
-  #   - uses: actions/setup-node@v1
-  #     with:
-  #       node-version: 18
-
   docker_build: 
     runs-on: self-hosted
     name: Docker Image Build And Push 
     # needs: [build]
     steps:
-      - name: Log Docker Hub Username
-        env: 
-            username: ${{ secrets.DOCKERHUB_USERNAME }}
-            password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
-        run: | 
-              echo $username - $password
-              echo ${{ secrets.DOCKERHUB_USERNAME }} - ${{ secrets.DOCKER_ACCESS_TOKEN }}
       - name: Checkout code
         uses: actions/checkout@v2
+        
+      - name: List Checked Out files
+        run: ls -la 
+        
       - name: Login to Docker Hub
         uses: docker/login-action@v1
         with:
           username: ${{ secrets.DOCKER_USERNAME }}
           password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
-           # username: giabao0403
-           # password: dckr_pat_DawHkX61q9UjSsT11HJ1LK-wa9k
       - name: Build Docker image
         uses: docker/build-push-action@v2
         with:
@@ -59,9 +44,10 @@ jobs:
           password: ${{ secrets.SSH_PASSWORD }}
           port: 22
           script: |
-            docker stop app-chat-be;
-            docker rm app-chat-be;
-            docker pull ${{ secrets.DOCKER_USERNAME }}/app-chat-be:latest;
+            docker login -u ${{ secrets.DOCKER_USERNAME }} -p ${{ secrets.DOCKER_ACCESS_TOKEN }}
+            docker rmi ${{ secrets.DOCKER_USERNAME }}/app-chat-be:latest;
+            # docker pull ${{ secrets.DOCKER_USERNAME }}/app-chat-be:latest;
+            # docker stop app-chat-be;
             docker-compose up -d
 
 
