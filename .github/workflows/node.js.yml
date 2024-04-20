@@ -24,7 +24,10 @@ jobs:
     # needs: [build]
     steps:
       - name: Log Docker Hub Username
-        run: echo ${{ secrets.DOCKERHUB_USERNAME }} - ${{ secrets.DOCKER_ACCESS_TOKEN }}
+        env: 
+            username: ${{ secrets.DOCKERHUB_USERNAME }}
+            password: ${{ secrets.DOCKER_ACCESS_TOKEN }}
+        run: echo $username - $password
       - name: Checkout code
         uses: actions/checkout@v2
       - name: Login to Docker Hub
