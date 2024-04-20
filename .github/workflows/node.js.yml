@@ -8,22 +8,25 @@ on:
     branches: [ "main" ]
 
 jobs:
-  build:
+  # build:
 
-    runs-on: self-hosted
-    name: Countinous Intergration Test 
-    steps: 
-    - uses: actions/checkout@v2
-    - uses: actions/setup-node@v1
-      with:
-        node-version: 18
+  #   runs-on: self-hosted
+  #   name: Countinous Intergration Test 
+  #   steps: 
+  #   - uses: actions/checkout@v2
+  #   - uses: actions/setup-node@v1
+  #     with:
+  #       node-version: 18
 
   docker_build: 
     runs-on: self-hosted
     name: Docker Image Build And Push 
-    needs: [build]
+    # needs: [build]
     steps:
-      - uses: actions/checkout@v2
+      - name: Log Docker Hub Username
+        run: echo ${{ secrets.DOCKERHUB_USERNAME }} - ${{ secrets.DOCKER_ACCESS_TOKEN }}
+      - name: Checkout code
+        uses: actions/checkout@v2
       - name: Login to Docker Hub
         uses: docker/login-action@v3
         with:
