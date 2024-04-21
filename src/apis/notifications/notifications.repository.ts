@@ -1,14 +1,14 @@
-import { BaseAbstractRepostitory } from '@app/common/base/base.repository';
+import { BaseAbstractRepository } from '@app/common/base/base.repository';
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { NotificationEntity } from './entity/notifications.entity';
-import { NotificationsRepositoyInterface } from './notifications.interface';
+import { NotificationsRepositoryInterface } from './notifications.interface';
 import { Repository } from 'typeorm';
 
 @Injectable()
 export class NotificationRepository
-  extends BaseAbstractRepostitory<NotificationEntity>
-  implements NotificationsRepositoyInterface
+  extends BaseAbstractRepository<NotificationEntity>
+  implements NotificationsRepositoryInterface
 {
   constructor(
     @InjectRepository(NotificationEntity)

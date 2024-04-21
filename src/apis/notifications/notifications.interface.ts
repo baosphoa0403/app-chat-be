@@ -1,4 +1,4 @@
-import { BaseAbstractRepostitory } from '@app/common/base/base.repository';
+import { BaseAbstractRepository } from '@app/common/base/base.repository';
 import { NotificationEntity } from './entity/notifications.entity';
 
-export interface NotificationsRepositoyInterface extends BaseAbstractRepostitory<NotificationEntity> {}
+export interface NotificationsRepositoryInterface extends BaseAbstractRepository<NotificationEntity> {}
