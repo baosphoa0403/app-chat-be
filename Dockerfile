@@ -13,11 +13,5 @@ Run yarn install
 RUN yarn run build 
 
 #Run end of file 
-CMD ["node", "dist/main.js"]
-
-
-
-
-
-
-
+#CMD ["node", "dist/main.js"]
+CMD ["yarn", "run", "start:dev"]
