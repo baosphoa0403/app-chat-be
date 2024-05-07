@@ -1,4 +1,4 @@
-import { BaseEntity, DeepPartial, FindOneOptions, FindOptionsWhere, In, Repository } from 'typeorm';
+import { BaseEntity, DeepPartial, FindOneOptions, FindOptionsWhere, Repository } from 'typeorm';
 import { FindManyOptions } from 'typeorm/find-options/FindManyOptions';
 import { BaseInterfaceRepository } from '@app/common/base/base.interface';
 import { QueryDeepPartialEntity } from 'typeorm/query-builder/QueryPartialEntity';

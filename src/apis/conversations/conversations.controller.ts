@@ -23,7 +23,7 @@ export class ConversationsController {
   }
 
   @Get(':userId')
-  async findUserByUserId(@Param('userId') userId: string): Promise<ConversationEntity> {
+  async findUserByUserId(@Param('userId') userId: string): Promise<ConversationEntity[]> {
     return await this.conversationService.findUserByUserId(userId);
   }
 

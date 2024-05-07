@@ -3,5 +3,5 @@ import { ConversationEntity } from './entity/conversations.entity';
 
 export interface ConversationsRepositoryInterface extends BaseInterfaceRepository<ConversationEntity> {
   findConversationByName(name: string): Promise<ConversationEntity[] | undefined>;
-  findUserId(userId: string): Promise<ConversationEntity>;
+  findUserId(userId: string): Promise<ConversationEntity[]>;
 }
