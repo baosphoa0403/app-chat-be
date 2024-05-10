@@ -17,9 +17,20 @@ export const configTypeorm = {
   password: process.env.POSTGRES_PASSWORD,
   database: process.env.POSTGRES_DB,
   schema: process.env.DB_SCHEMA,
-  migrations: [process.cwd() + '/src/modules/database/migrations/*.ts']
+  migrations: [process.cwd() + '/dist/modules/database/migrations/*.js'],
+  entities: [process.cwd() + '/dist/apis/**/*.entity.js']
 };
 
 const connectionSource = new DataSource(configTypeorm as DataSourceOptions);
+
+export const runMigration = () => {
+  connectionSource.initialize().then(async () => {
+    if (connectionSource.isInitialized) {
+      console.info('run migrate');
+      const migrations = await connectionSource.runMigrations();
+      console.table(migrations);
+    }
+  });
+};
 
 export default connectionSource;
