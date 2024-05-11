@@ -10,15 +10,15 @@ import { ConfigService } from '@nestjs/config';
         console.log(configService.get<string>('database'));
         return {
           type: 'postgres',
-          host: configService.get<string>('database.host'),
-          port: configService.get<number>('database.port'),
-          username: configService.get<string>('database.username'),
-          password: configService.get<string>('database.password'),
-          database: configService.get<string>('database.db'),
-          schema: configService.get<string>('database.schema'),
+          host: configService.get<string>('db.host'),
+          port: configService.get<number>('db.port'),
+          username: configService.get<string>('db.username'),
+          password: configService.get<string>('db.password'),
+          database: configService.get<string>('db.database'),
+          schema: configService.get<string>('db.schema'),
           autoLoadEntities: true,
-          migrationsTableName: `migrations`,
-          synchronize: true,
+          migrationsTableName: `migrations_app_chat`,
+          synchronize: false,
           logging: true
         };
       }

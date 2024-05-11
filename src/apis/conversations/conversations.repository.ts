@@ -22,22 +22,22 @@ export class ConversationRepository
   }
 
   async findConversationByName(name: string): Promise<ConversationEntity[]> {
-    const query = this.generalQueryBuilder();
+    const query = await this.generalQueryBuilder();
     if (name) {
       query
         .where('conversations.name LIKE :name', { name: `%${name}%` })
         .andWhere('conversations.isActive IN (true, false)', { isActive: [true, false] });
     }
 
-    return query.getMany();
+    return await query.getMany();
   }
 
-  async findUserId(userId: string): Promise<ConversationEntity> {
+  async findUserId(userId: string): Promise<ConversationEntity[]> {
     const query = await this.generalQueryBuilder();
     query
       .leftJoinAndSelect('conversations.userConversationEntities', 'userConversationEntity')
       .leftJoinAndSelect('userConversationEntity.userEntity', 'userEntity')
       .where('userEntity.id = :userId', { userId });
-    return await query.getOne();
+    return await query.getMany();
   }
 }

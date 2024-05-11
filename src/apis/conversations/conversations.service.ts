@@ -45,7 +45,7 @@ export class ConversationsService {
     return conversations;
   }
 
-  async findUserByUserId(userId: string): Promise<ConversationEntity> {
+  async findUserByUserId(userId: string): Promise<ConversationEntity[]> {
     return await this.conversationRepository.findUserId(userId);
   }
   async updateConversation(data: UpdateConversationDTO) {
