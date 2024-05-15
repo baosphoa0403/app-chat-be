@@ -32,3 +32,4 @@ docker stop app-chat-be
 docker rm  app-chat-be
 docker compose --env-file ../.env.dev  up -d --no-deps --build be
 
+test
